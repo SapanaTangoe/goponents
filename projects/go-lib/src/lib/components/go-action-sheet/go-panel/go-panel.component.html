@@ -15,7 +15,9 @@
 
 <!-- No External Link -->
 <ng-template #noLink>
+  <!-- With panelContent -->
   <button
+    *ngIf="panelContent; else projectedContent"
     class="go-panel"
     [ngClass]="panelClasses()"
     (click)="handleAction()">
@@ -26,11 +28,16 @@
         {{icon}}
       </span>
       <span
-        *ngIf="panelContent"
         class="go-panel__title-text"
         [innerHtml]="panelContent">
       </span>
-      <ng-content *ngIf="!panelContent"></ng-content>
     </span>
   </button>
+
+  <!-- Without panelContent (using content projection instead) -->
+  <ng-template #projectedContent>
+    <div class="go-panel">
+      <ng-content></ng-content>
+    </div>
+  </ng-template>
 </ng-template>
