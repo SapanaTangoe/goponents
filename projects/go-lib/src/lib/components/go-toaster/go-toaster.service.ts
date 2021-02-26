@@ -75,6 +75,7 @@ export class GoToasterService {
     comp.message = toastInterface.message;
     comp.type = toastInterface.type;
     comp.header = toastInterface.header;
+    comp.dismissable = toastInterface.dismissable !== undefined ? toastInterface.dismissable : false;
     comp.duration = duration;
 
     return  comp;
